@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface2: var(--surface2);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-brand: var(--brand);
+  --color-brand-soft: var(--brand-soft);
+  --color-brand-fg: var(--brand-fg);
+  --color-ok: var(--ok);
+  --color-warn: var(--warn);
+  --color-bad: var(--bad);
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+:root {
+  --bg: #f5f6f8;
+  --surface: #ffffff;
+  --surface2: #eef0f4;
+  --fg: #0f172a;
+  --muted: #5b6678;
+  --line: #e3e7ee;
+  --brand: #4338ca;
+  --brand-soft: #eef0ff;
+  --brand-fg: #ffffff;
+  --ok: #047857;
+  --warn: #b45309;
+  --bad: #b91c1c;
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #0b0f17;
+  --surface: #121926;
+  --surface2: #1a2333;
+  --fg: #e6e9ef;
+  --muted: #94a0b4;
+  --line: #243044;
+  --brand: #8b93ff;
+  --brand-soft: #1b2146;
+  --brand-fg: #0b0f17;
+  --ok: #34d399;
+  --warn: #fbbf24;
+  --bad: #f87171;
+  color-scheme: dark;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer components {
+  .card {
+    @apply rounded-xl border border-line bg-surface p-5;
+  }
+  .btn {
+    @apply inline-flex min-h-9 items-center justify-center gap-2 rounded-lg border border-line bg-surface px-3.5 py-1.5 text-sm font-medium text-fg transition-colors hover:bg-surface2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply border-brand bg-brand text-brand-fg hover:bg-brand hover:opacity-90;
+  }
+  .btn-danger {
+    @apply border-bad/40 text-bad hover:bg-bad/10;
+  }
+  .btn-ghost {
+    @apply border-transparent bg-transparent hover:bg-surface2;
+  }
+  .input {
+    @apply w-full rounded-lg border border-line bg-surface px-3 py-2 text-sm text-fg placeholder:text-muted focus:border-brand focus:outline-2 focus:outline-brand/30 disabled:opacity-50;
+  }
+  .label {
+    @apply mb-1 block text-xs font-semibold uppercase tracking-wide text-muted;
+  }
+  .badge {
+    @apply inline-flex items-center gap-1 rounded-full border border-line bg-surface2 px-2 py-0.5 text-xs font-medium text-muted;
+  }
+  .section-title {
+    @apply mb-3 text-sm font-semibold uppercase tracking-wide text-muted;
+  }
+}
+
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.25rem 0;
+}
+.katex {
+  font-size: 1.05em;
+}
+.rich {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
